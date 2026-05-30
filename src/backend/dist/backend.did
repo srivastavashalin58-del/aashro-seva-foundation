@@ -1,0 +1,51 @@
+type VolunteerSubmission = 
+ record {
+   availability: text;
+   email: text;
+   id: SubmissionId;
+   message: text;
+   name: text;
+   phone: text;
+   skills: text;
+   submittedAt: Timestamp;
+ };
+type Timestamp = int;
+type SubmissionResult = 
+ record {
+   id: SubmissionId;
+   message: text;
+   success: bool;
+ };
+type SubmissionId = nat;
+type DonationSubmission = 
+ record {
+   amount: opt text;
+   donationType: text;
+   email: text;
+   id: SubmissionId;
+   message: text;
+   name: text;
+   phone: text;
+   submittedAt: Timestamp;
+ };
+type ContactSubmission = 
+ record {
+   email: text;
+   id: SubmissionId;
+   message: text;
+   name: text;
+   phone: opt text;
+   subject: text;
+   submittedAt: Timestamp;
+ };
+service : {
+  getContacts: () -> (vec ContactSubmission) query;
+  getDonations: () -> (vec DonationSubmission) query;
+  getVolunteers: () -> (vec VolunteerSubmission) query;
+  submitContact: (name: text, email: text, subject: text, message: text,
+   phone: opt text) -> (SubmissionResult);
+  submitDonation: (name: text, email: text, phone: text, donationType: 
+   text, amount: opt text, message: text) -> (SubmissionResult);
+  submitVolunteer: (name: text, phone: text, email: text, skills: text,
+   availability: text, message: text) -> (SubmissionResult);
+}

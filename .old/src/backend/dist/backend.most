@@ -1,0 +1,108 @@
+// Version: 4.0.0
+type ContactSubmission__185949536 =
+  {
+    email : Text;
+    id : SubmissionId__741433157;
+    message : Text;
+    name : Text;
+    phone : ?Text;
+    subject : Text;
+    submittedAt : Timestamp__301639476
+  };
+type ContactSubmission__70096592 =
+  {
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    phone : ?Text;
+    subject : Text;
+    submittedAt : Int
+  };
+type DonationSubmission__799898918 =
+  {
+    amount : ?Text;
+    donationType : Text;
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    phone : Text;
+    submittedAt : Int
+  };
+type DonationSubmission__867265899 =
+  {
+    amount : ?Text;
+    donationType : Text;
+    email : Text;
+    id : SubmissionId__741433157;
+    message : Text;
+    name : Text;
+    phone : Text;
+    submittedAt : Timestamp__301639476
+  };
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__947983423 =
+  {
+    contacts : List__415060402<ContactSubmission__70096592>;
+    counter : {var nextId : Nat};
+    donations : List__415060402<DonationSubmission__799898918>;
+    volunteers : List__415060402<VolunteerSubmission__202976657>
+  };
+type OldActor__1046790669 = {};
+type SubmissionId__741433157 = Nat;
+type Timestamp__301639476 = Int;
+type VolunteerSubmission__202976657 =
+  {
+    availability : Text;
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    phone : Text;
+    skills : Text;
+    submittedAt : Int
+  };
+type VolunteerSubmission__81477219 =
+  {
+    availability : Text;
+    email : Text;
+    id : SubmissionId__741433157;
+    message : Text;
+    name : Text;
+    phone : Text;
+    skills : Text;
+    submittedAt : Timestamp__301639476
+  };
+{
+  "20260526_000000_Init" : OldActor__1046790669 -> NewActor__947983423
+}
+actor  {
+  stable contacts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ContactSubmission__185949536]];
+      var elementIndex : Nat__490723111
+    };
+  stable counter : {var nextId : Nat};
+  stable donations :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?DonationSubmission__867265899]];
+      var elementIndex : Nat__490723111
+    };
+  stable volunteers :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?VolunteerSubmission__81477219]];
+      var elementIndex : Nat__490723111
+    }
+};
